@@ -22,12 +22,17 @@ function addToCart(cart, headphones, quantity) {
 
 	return copy
 }
-function changeQuantity() {
-	return notImplemented()
+function changeQuantity(cart, currentItem, quantity) {
+	if (quantity <= 0) throw new RangeError('количество должно быть больше 0')
+	const copy = [...cart]
+
+	if (currentItem > cart.length) return copy
+	if (quantity > cart[currentItem - 1].stock) throw new RangeError(`На складе не хватает продукта`)
+
+	copy[currentItem - 1] = { ...copy[currentItem - 1], quantity: quantity }
+	return copy
 }
-function removeFromCart() {
-	return notImplemented()
-}
+function removeFromCart(cart, currentItem) {}
 function calculateCartSubtotal() {
 	return notImplemented()
 }
