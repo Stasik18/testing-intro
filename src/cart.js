@@ -32,7 +32,14 @@ function changeQuantity(cart, currentItem, quantity) {
 	copy[currentItem - 1] = { ...copy[currentItem - 1], quantity: quantity }
 	return copy
 }
-function removeFromCart(cart, currentItem) {}
+function removeFromCart(cart, currentItem) {
+	const copy = [...cart]
+
+	if (currentItem > cart.length) return copy
+	copy.splice(currentItem - 1, 1)
+
+	return copy.length ? copy : []
+}
 function calculateCartSubtotal() {
 	return notImplemented()
 }
