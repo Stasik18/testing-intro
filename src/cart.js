@@ -40,12 +40,14 @@ function removeFromCart(cart, currentItem) {
 
 	return copy.length ? copy : []
 }
-function calculateCartSubtotal() {
-	return notImplemented()
+function calculateCartSubtotal(cart) {
+	const copy = [...cart]
+
+	if (!copy.length) return 0
+
+	return copy.reduce((acc, item) => (acc += item.price * item.quantity), 0)
 }
-function calculateOrderTotal() {
-	return notImplemented()
-}
+function calculateOrderTotal(cart, promo) {}
 
 const cartApi = {
 	addToCart,
